@@ -1,0 +1,40 @@
+/* Wayfare design tokens */
+:root {
+  --bg: #FAFAF8;
+  --surface: #FFFFFF;
+  --surface-2: #F4F4F1;
+  --border: #E8E8E4;
+  --text: #111111;
+  --text-muted: #666660;
+  --accent: #2F6F6D;
+  --accent-light: #E8F0EF;
+  --accent-hover: #245856;
+  --danger: #B94040;
+  --warn: #8B6914;
+  --success: #2A6E2A;
+  --badge-cheapest: #2A6E2A;
+  --badge-fastest: #1A4A8A;
+  --badge-bestvalue: #6B3A8A;
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --font: 'Inter', 'DM Sans', system-ui, -apple-system, sans-serif;
+  --transition: 150ms ease;
+  --transition-md: 250ms ease;
+  --max-width: 1200px;
+  --sidebar-w: 340px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111110;
+    --surface: #1A1A18;
+    --surface-2: #222220;
+    --border: #333330;
+    --text: #F0F0EE;
+    --text-muted: #909088;
+    --accent-light: #1A2E2D;
+  }
+}

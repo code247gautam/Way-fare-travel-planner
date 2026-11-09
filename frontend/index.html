@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayfare – AI Travel Planner</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <style>
+    .hero { text-align: center; padding: 5rem 1.5rem 3rem; }
+    .hero h1 { font-size: 2.5rem; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 2rem; }
+    .hero-cta { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 860px; margin: 0 auto 3rem; }
+    @media (max-width: 640px) { .features { grid-template-columns: 1fr; } .hero h1 { font-size: 1.75rem; } }
+    .feature-card { text-align: center; padding: 1.5rem; }
+    .feature-icon { width: 40px; height: 40px; margin: 0 auto 0.75rem; color: var(--accent); }
+    .feature-icon svg { width: 40px; height: 40px; stroke: var(--accent); }
+  </style>
+</head>
+<body>
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Wayfare
+  </a>
+  <nav class="topbar-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="planner.html">Plan a trip</a>
+    <a href="compare.html">Compare</a>
+  </nav>
+  <button class="btn-ghost" id="login-btn" style="font-size:0.85rem">Sign in</button>
+</nav>
+
+<main>
+  <section class="hero">
+    <h1>Plan your journey,<br>calmly.</h1>
+    <p>Describe where you want to go. Wayfare builds a day-by-day itinerary with transport, stays, weather, and maps — powered by IBM Granite.</p>
+    <div class="hero-cta">
+      <a href="planner.html" class="btn-primary" style="padding:0.65rem 1.5rem;font-size:1rem;border-radius:var(--radius-sm);display:inline-block">Start planning →</a>
+      <a href="compare.html" class="btn-secondary" style="padding:0.65rem 1.5rem;font-size:1rem;border-radius:var(--radius-sm);display:inline-block">Compare prices</a>
+    </div>
+  </section>
+
+  <section class="page" style="padding-top:0">
+    <div class="features">
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Smart itineraries</h3>
+        <p class="text-sm text-muted mt-1">IBM Granite builds day-by-day trips from a single sentence. Trains, flights, buses, cabs, stays.</p>
+      </div>
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Price comparison</h3>
+        <p class="text-sm text-muted mt-1">Cheapest, Fastest, Best Value badges across all transport options and stays.</p>
+      </div>
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Collaborative trips</h3>
+        <p class="text-sm text-muted mt-1">Share with anyone. Owner, Editor, Viewer roles. Comments, checklist, budget split.</p>
+      </div>
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Smart replan</h3>
+        <p class="text-sm text-muted mt-1">Train cancelled? Flight delayed? One tap to see the new plan with a Granite explanation.</p>
+      </div>
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Live weather & maps</h3>
+        <p class="text-sm text-muted mt-1">Weather forecasts per city. Leaflet maps with place markers and route overlays.</p>
+      </div>
+      <div class="card feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>International trips</h3>
+        <p class="text-sm text-muted mt-1">Visa info, currency conversion, international flights with layover notes.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>Powered by <strong>IBM Granite</strong> · IBM Cloud Lite (Cloudant, COS, App ID) · © 2025 Wayfare</p>
+</footer>
+
+<script type="module">
+  import { api } from './js/api.js';
+  document.getElementById('login-btn').addEventListener('click', async () => {
+    const data = await api.devLogin().catch(() => null);
+    if (data?.token) {
+      api.setToken(data.token);
+      document.getElementById('login-btn').textContent = 'Dev mode ✓';
+    }
+  });
+  // Auto dev login
+  if (!localStorage.getItem('wayfare_token')) {
+    api.devLogin().then(d => d?.token && api.setToken(d.token)).catch(() => {});
+  }
+</script>
+</body>
+</html>

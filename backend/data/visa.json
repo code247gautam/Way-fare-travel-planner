@@ -1,0 +1,37 @@
+[
+  {
+    "nationality": "Indian",
+    "destination_country": "France",
+    "visa_required": true,
+    "visa_type": "Schengen Visa",
+    "notes": "Apply at French VFS. Processing 10–15 working days. 3 months validity."
+  },
+  {
+    "nationality": "Indian",
+    "destination_country": "UK",
+    "visa_required": true,
+    "visa_type": "Standard Visitor Visa",
+    "notes": "Apply online via UKVI. Processing up to 3 weeks."
+  },
+  {
+    "nationality": "Indian",
+    "destination_country": "UAE",
+    "visa_required": true,
+    "visa_type": "Tourist Visa on Arrival",
+    "notes": "Indians with valid US, UK, or EU visa get visa on arrival. Otherwise apply online."
+  },
+  {
+    "nationality": "Indian",
+    "destination_country": "Thailand",
+    "visa_required": false,
+    "visa_type": "Visa on Arrival",
+    "notes": "30-day visa-free entry for Indian passport holders. Ensure passport valid for 6 months."
+  },
+  {
+    "nationality": "Indian",
+    "destination_country": "Singapore",
+    "visa_required": false,
+    "visa_type": "Visa on Arrival",
+    "notes": "30-day visa-free entry for Indian passport holders."
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "stay-001",
+    "name": "The Kesar Villa",
+    "city": "Jaipur",
+    "price_per_night": 3200,
+    "currency": "INR",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=400",
+    "url": "#",
+    "source": "mock",
+    "best_value": true
+  },
+  {
+    "id": "stay-002",
+    "name": "Lakeview Haveli",
+    "city": "Udaipur",
+    "price_per_night": 5800,
+    "currency": "INR",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400",
+    "url": "#",
+    "source": "mock",
+    "best_value": false
+  },
+  {
+    "id": "stay-003",
+    "name": "Bengaluru Nest",
+    "city": "Bengaluru",
+    "price_per_night": 1800,
+    "currency": "INR",
+    "rating": 4.2,
+    "image": "https://images.unsplash.com/photo-1586105251261-72a756497a11?w=400",
+    "url": "#",
+    "source": "mock",
+    "best_value": false
+  },
+  {
+    "id": "stay-004",
+    "name": "Marine Drive Studio",
+    "city": "Mumbai",
+    "price_per_night": 4200,
+    "currency": "INR",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=400",
+    "url": "#",
+    "source": "mock",
+    "best_value": true
+  },
+  {
+    "id": "stay-005",
+    "name": "Goa Beach Cottage",
+    "city": "Goa",
+    "price_per_night": 3600,
+    "currency": "INR",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400",
+    "url": "#",
+    "source": "mock",
+    "best_value": false
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "bus_id": "RSRTC-001",
+    "operator": "Rajasthan Roadways",
+    "origin": "Jaipur",
+    "destination": "Udaipur",
+    "departure": "07:00",
+    "arrival": "13:30",
+    "duration_minutes": 390,
+    "fare_inr": 420,
+    "bus_type": "AC Sleeper",
+    "availability": 22
+  },
+  {
+    "bus_id": "VRL-205",
+    "operator": "VRL Travels",
+    "origin": "Bengaluru",
+    "destination": "Mysuru",
+    "departure": "06:30",
+    "arrival": "09:30",
+    "duration_minutes": 180,
+    "fare_inr": 280,
+    "bus_type": "AC Semi-sleeper",
+    "availability": 15
+  },
+  {
+    "bus_id": "MSRTC-009",
+    "operator": "MSRTC",
+    "origin": "Mumbai",
+    "destination": "Pune",
+    "departure": "08:00",
+    "arrival": "11:30",
+    "duration_minutes": 210,
+    "fare_inr": 350,
+    "bus_type": "AC Shivneri",
+    "availability": 30
+  },
+  {
+    "bus_id": "OLA-BUS-44",
+    "operator": "OlaBus",
+    "origin": "Hyderabad",
+    "destination": "Bengaluru",
+    "departure": "22:00",
+    "arrival": "07:00+1",
+    "duration_minutes": 540,
+    "fare_inr": 750,
+    "bus_type": "AC Sleeper",
+    "availability": 18
+  }
+]

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planner – Wayfare</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    .planner-layout { display: grid; grid-template-columns: var(--sidebar-w) 1fr; gap: 1.5rem; align-items: start; }
+    @media (max-width: 900px) { .planner-layout { grid-template-columns: 1fr; } }
+    #map { height: 360px; }
+    .itinerary-area { max-height: 80vh; overflow-y: auto; }
+  </style>
+</head>
+<body>
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Wayfare
+  </a>
+  <nav class="topbar-nav">
+    <a href="index.html">Home</a>
+    <a href="planner.html" class="active">Plan</a>
+    <a href="compare.html">Compare</a>
+  </nav>
+</nav>
+
+<div class="page" style="padding-top:1rem">
+  <div class="planner-layout">
+    <!-- Sidebar: chat -->
+    <aside>
+      <div id="chat-container"></div>
+      <div id="share-panel" class="mt-2" style="display:none"></div>
+    </aside>
+
+    <!-- Main: map + itinerary -->
+    <main>
+      <div id="map-container" class="mb-2" style="display:none">
+        <div id="map"></div>
+      </div>
+      <div id="compare-container" class="mb-2"></div>
+      <div id="itinerary-container" class="itinerary-area"></div>
+      <div id="empty-state" class="card" style="text-align:center;padding:3rem 2rem">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" style="margin:0 auto 1rem;display:block"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p class="text-muted">Describe your trip in the chat to get started.</p>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="app-footer">Powered by <strong>IBM Granite</strong></footer>
+
+<script type="module">
+  import { api } from './js/api.js';
+  import { ChatUI } from './js/chat.js';
+  import { renderItinerary } from './js/itinerary.js';
+  import { initMap, plotItinerary, plotPlaces } from './js/map.js';
+  import { renderCompareView } from './js/compare.js';
+  import { ReplanModal } from './js/replan.js';
+  import { SharePanel } from './js/share.js';
+
+  // Auto dev login
+  if (!localStorage.getItem('wayfare_token')) {
+    api.devLogin().then(d => d?.token && api.setToken(d.token)).catch(() => {});
+  }
+
+  let currentTrip = null;
+  let currentTripId = null;
+  let sharePanel = null;
+  const replanModal = new ReplanModal();
+
+  const chatContainer = document.getElementById('chat-container');
+  const itineraryContainer = document.getElementById('itinerary-container');
+  const compareContainer = document.getElementById('compare-container');
+  const mapContainer = document.getElementById('map-container');
+  const emptyState = document.getElementById('empty-state');
+  const sharePanelEl = document.getElementById('share-panel');
+
+  const chat = new ChatUI(chatContainer, async (prefs) => {
+    emptyState.style.display = 'none';
+    itineraryContainer.innerHTML = '<div class="flex items-center gap-2 mt-2"><span class="spinner"></span><span class="text-muted">Building your itinerary…</span></div>';
+
+    try {
+      const result = await api.planTrip(prefs, crypto.randomUUID());
+      currentTrip = result.itinerary;
+      currentTripId = result.trip_id;
+
+      // Render itinerary
+      renderItinerary(result.itinerary, itineraryContainer);
+
+      // Show map
+      mapContainer.style.display = 'block';
+      initMap('map');
+      plotItinerary(result.itinerary);
+
+      // Load places for destination
+      const places = await api.findPlaces(prefs.destination).catch(() => []);
+      if (places.length) plotPlaces(places);
+
+      // Show compare (normal mode only)
+      renderCompareView(compareContainer, prefs.origin, prefs.destination, prefs.start_date);
+
+      // Share panel
+      if (result.share_token) {
+        sharePanelEl.style.display = 'block';
+        sharePanel = new SharePanel(sharePanelEl, currentTripId, result.share_token);
+        sharePanel.loadSharedData({ role: 'owner', comments: [], checklist: [], budget_split: [] });
+        sharePanel.startPolling();
+      }
+
+      // Wire share/replan buttons (added by renderItinerary)
+      document.getElementById('btn-share-trip')?.addEventListener('click', () => {
+        sharePanelEl.style.display = 'block';
+        sharePanelEl.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('btn-simulate-disruption')?.addEventListener('click', () => {
+        const transport = currentTrip?.days?.[0]?.transport;
+        replanModal.open(currentTripId, {
+          simulate: true,
+          serviceId: transport?.service_id || '12951',
+          serviceType: transport?.mode || 'train',
+        });
+      });
+
+      document.getElementById('btn-export-trip')?.addEventListener('click', async () => {
+        const result = await api.exportTrip(currentTripId).catch(e => ({ error: e.message }));
+        alert(result.error ? `Export failed: ${result.error}` : `Exported! URL: ${result.url}`);
+      });
+
+    } catch (err) {
+      itineraryContainer.innerHTML = `<p class="text-muted">Error: ${err.message}</p>`;
+      emptyState.style.display = 'block';
+    }
+  });
+
+  // Handle approved replan
+  document.addEventListener('wayfare:replan-approved', async (e) => {
+    if (currentTrip && e.detail.afterDays) {
+      currentTrip.days = e.detail.afterDays;
+      renderItinerary(currentTrip, itineraryContainer);
+      plotItinerary(currentTrip);
+    }
+  });
+</script>
+</body>
+</html>

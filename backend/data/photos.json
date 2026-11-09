@@ -1,0 +1,30 @@
+{
+  "Delhi": [
+    "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600",
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600"
+  ],
+  "Mumbai": [
+    "https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?w=600",
+    "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600"
+  ],
+  "Jaipur": [
+    "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600",
+    "https://images.unsplash.com/photo-1477587458883-47145ed5a073?w=600"
+  ],
+  "Goa": [
+    "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600",
+    "https://images.unsplash.com/photo-1582610285985-a42d9193f2fd?w=600"
+  ],
+  "Bengaluru": [
+    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600"
+  ],
+  "Agra": [
+    "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600"
+  ],
+  "Udaipur": [
+    "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600"
+  ],
+  "London": [
+    "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600"
+  ]
+}

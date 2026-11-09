@@ -1,0 +1,72 @@
+[
+  {
+    "train_number": "12951",
+    "train_name": "Mumbai Rajdhani Express",
+    "origin": "NDLS",
+    "destination": "MMCT",
+    "departure": "16:25",
+    "arrival": "08:15+1",
+    "duration_minutes": 955,
+    "classes": ["1A", "2A", "3A"],
+    "fare_inr": {"1A": 4850, "2A": 2850, "3A": 1980},
+    "availability": {"1A": 4, "2A": 12, "3A": 28},
+    "status": "ON_TIME",
+    "platform": "16"
+  },
+  {
+    "train_number": "12002",
+    "train_name": "New Delhi Bhopal Shatabdi",
+    "origin": "NDLS",
+    "destination": "BPL",
+    "departure": "06:00",
+    "arrival": "13:40",
+    "duration_minutes": 460,
+    "classes": ["CC", "EC"],
+    "fare_inr": {"CC": 1005, "EC": 1890},
+    "availability": {"CC": 45, "EC": 10},
+    "status": "ON_TIME",
+    "platform": "1"
+  },
+  {
+    "train_number": "12301",
+    "train_name": "Howrah Rajdhani Express",
+    "origin": "NDLS",
+    "destination": "HWH",
+    "departure": "16:55",
+    "arrival": "09:55+1",
+    "duration_minutes": 1020,
+    "classes": ["1A", "2A", "3A"],
+    "fare_inr": {"1A": 4720, "2A": 2740, "3A": 1920},
+    "availability": {"1A": 6, "2A": 18, "3A": 42},
+    "status": "ON_TIME",
+    "platform": "9"
+  },
+  {
+    "train_number": "12431",
+    "train_name": "Trivandrum Rajdhani",
+    "origin": "NDLS",
+    "destination": "TVC",
+    "departure": "10:55",
+    "arrival": "10:30+2",
+    "duration_minutes": 2855,
+    "classes": ["2A", "3A"],
+    "fare_inr": {"2A": 3120, "3A": 2180},
+    "availability": {"2A": 8, "3A": 24},
+    "status": "DELAYED",
+    "platform": "4"
+  },
+  {
+    "train_number": "22691",
+    "train_name": "Rajdhani Express Bangalore",
+    "origin": "NDLS",
+    "destination": "SBC",
+    "departure": "20:00",
+    "arrival": "06:00+2",
+    "duration_minutes": 1800,
+    "classes": ["1A", "2A", "3A"],
+    "fare_inr": {"1A": 5100, "2A": 3000, "3A": 2100},
+    "availability": {"1A": 3, "2A": 15, "3A": 30},
+    "status": "ON_TIME",
+    "platform": "2"
+  }
+]

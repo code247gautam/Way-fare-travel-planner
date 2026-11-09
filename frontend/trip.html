@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Dashboard – Wayfare</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<nav class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Wayfare
+  </a>
+  <nav class="topbar-nav">
+    <a href="index.html">Home</a>
+    <a href="planner.html">Plan</a>
+    <a href="compare.html">Compare</a>
+  </nav>
+</nav>
+
+<div class="page">
+  <div class="flex items-center gap-2 mb-2">
+    <h1 id="trip-title">Loading trip…</h1>
+    <span id="trip-source-badge"></span>
+  </div>
+
+  <div class="grid-2" style="align-items:start;gap:1.5rem">
+    <div>
+      <div id="map" style="height:300px;margin-bottom:1rem"></div>
+      <div id="itinerary-container"></div>
+    </div>
+    <div>
+      <div id="disruption-check" class="mb-2"></div>
+      <div id="share-panel"></div>
+      <div class="flex gap-2 mt-2">
+        <button class="btn-secondary" id="btn-replan-simulate">Simulate disruption</button>
+        <button class="btn-secondary" id="btn-export">Export</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="app-footer">Powered by <strong>IBM Granite</strong></footer>
+
+<script type="module">
+  import { api } from './js/api.js';
+  import { renderItinerary } from './js/itinerary.js';
+  import { initMap, plotItinerary } from './js/map.js';
+  import { ReplanModal } from './js/replan.js';
+  import { SharePanel } from './js/share.js';
+
+  if (!localStorage.getItem('wayfare_token')) {
+    api.devLogin().then(d => d?.token && api.setToken(d.token)).catch(() => {});
+  }
+
+  const params = new URLSearchParams(location.search);
+  const tripId = params.get('trip_id');
+
+  if (!tripId) {
+    document.getElementById('trip-title').textContent = 'No trip selected';
+    document.getElementById('itinerary-container').innerHTML = '<p class="text-muted"><a href="planner.html">Plan a new trip →</a></p>';
+  } else {
+    const modal = new ReplanModal();
+    api.getTrip(tripId).then(async (tripDoc) => {
+      const itinerary = tripDoc;
+      document.getElementById('trip-title').textContent = itinerary.title || 'My Trip';
+      renderItinerary(itinerary, document.getElementById('itinerary-container'));
+      initMap('map');
+      plotItinerary(itinerary);
+
+      // Share panel
+      const shareData = { role: 'owner', comments: [], checklist: [], budget_split: [] };
+      const sp = new SharePanel(document.getElementById('share-panel'), tripId, null);
+      sp.loadSharedData(shareData);
+
+      document.getElementById('btn-replan-simulate').addEventListener('click', () => {
+        const transport = itinerary.days?.[0]?.transport;
+        modal.open(tripId, { simulate: true, serviceId: transport?.service_id || '12951', serviceType: transport?.mode || 'train' });
+      });
+
+      document.getElementById('btn-export').addEventListener('click', async () => {
+        const r = await api.exportTrip(tripId).catch(e => ({ error: e.message }));
+        alert(r.error ? `Export failed: ${r.error}` : `Exported!`);
+      });
+    }).catch((err) => {
+      document.getElementById('itinerary-container').innerHTML = `<p class="text-muted">Error: ${err.message}</p>`;
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+[
+  {
+    "place_id": "pl-001",
+    "name": "Amber Fort",
+    "category": "monument",
+    "address": "Devisinghpura, Amer, Jaipur, Rajasthan",
+    "lat": 26.9855,
+    "lon": 75.8513,
+    "rating": 4.6,
+    "opening_hours": "08:00–17:30"
+  },
+  {
+    "place_id": "pl-002",
+    "name": "Hawa Mahal",
+    "category": "monument",
+    "address": "Hawa Mahal Rd, Badi Choupad, Jaipur",
+    "lat": 26.9239,
+    "lon": 75.8267,
+    "rating": 4.4,
+    "opening_hours": "09:00–17:00"
+  },
+  {
+    "place_id": "pl-003",
+    "name": "Gateway of India",
+    "category": "monument",
+    "address": "Apollo Bandar, Colaba, Mumbai",
+    "lat": 18.9217,
+    "lon": 72.8347,
+    "rating": 4.5,
+    "opening_hours": "Open 24 hours"
+  },
+  {
+    "place_id": "pl-004",
+    "name": "Taj Mahal",
+    "category": "monument",
+    "address": "Dharmapuri, Forest Colony, Tajganj, Agra",
+    "lat": 27.1751,
+    "lon": 78.0421,
+    "rating": 4.8,
+    "opening_hours": "06:00–18:30"
+  },
+  {
+    "place_id": "pl-005",
+    "name": "Lalbagh Botanical Garden",
+    "category": "park",
+    "address": "Mavalli, Bengaluru",
+    "lat": 12.9507,
+    "lon": 77.5848,
+    "rating": 4.5,
+    "opening_hours": "06:00–19:00"
+  },
+  {
+    "place_id": "pl-006",
+    "name": "Chapora Fort",
+    "category": "monument",
+    "address": "Chapora, North Goa",
+    "lat": 15.6028,
+    "lon": 73.7395,
+    "rating": 4.3,
+    "opening_hours": "08:00–17:30"
+  }
+]

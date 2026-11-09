@@ -1,0 +1,24 @@
+{
+  "cities": {
+    "Delhi": {"lat": 28.6139, "lon": 77.209, "country": "India"},
+    "Mumbai": {"lat": 19.076, "lon": 72.8777, "country": "India"},
+    "Bengaluru": {"lat": 12.9716, "lon": 77.5946, "country": "India"},
+    "Kolkata": {"lat": 22.5726, "lon": 88.3639, "country": "India"},
+    "Chennai": {"lat": 13.0827, "lon": 80.2707, "country": "India"},
+    "Hyderabad": {"lat": 17.385, "lon": 78.4867, "country": "India"},
+    "Pune": {"lat": 18.5204, "lon": 73.8567, "country": "India"},
+    "Jaipur": {"lat": 26.9124, "lon": 75.7873, "country": "India"},
+    "Udaipur": {"lat": 24.5854, "lon": 73.7125, "country": "India"},
+    "Goa": {"lat": 15.2993, "lon": 74.124, "country": "India"},
+    "Agra": {"lat": 27.1767, "lon": 78.0081, "country": "India"},
+    "Varanasi": {"lat": 25.3176, "lon": 82.9739, "country": "India"},
+    "Mysuru": {"lat": 12.2958, "lon": 76.6394, "country": "India"},
+    "Kochi": {"lat": 9.9312, "lon": 76.2673, "country": "India"},
+    "Amritsar": {"lat": 31.634, "lon": 74.8723, "country": "India"},
+    "London": {"lat": 51.5074, "lon": -0.1278, "country": "UK"},
+    "Dubai": {"lat": 25.2048, "lon": 55.2708, "country": "UAE"},
+    "Paris": {"lat": 48.8566, "lon": 2.3522, "country": "France"},
+    "Singapore": {"lat": 1.3521, "lon": 103.8198, "country": "Singapore"},
+    "Bangkok": {"lat": 13.7563, "lon": 100.5018, "country": "Thailand"}
+  }
+}
